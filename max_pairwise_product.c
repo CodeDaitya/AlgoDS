@@ -18,14 +18,13 @@ int main()
   }*/
 
   while(1){
-    srand(time(NULL));
-    n = rand()%10 + 2;
+    n = rand()%4 + 2;
     numbers = (int*)malloc(sizeof(int)*n);
 
     printf("%d\n", n);
 
     for(int i = 0;i < n; i++){
-      *(numbers + i) = rand()%100000;
+      *(numbers + i) = rand()%10;
     }
     for(int i = 0;i < n; i++){
       printf("%d ", *(numbers + i));
@@ -40,7 +39,7 @@ int main()
       break;
     }
     else
-      printf("OK");
+      printf("OK\n");
   }
 
   return 0;
@@ -67,13 +66,13 @@ long long max_pairwise_product_fast(int n){
   int* num = numbers;
   int max_index1 = -1;
   for(int i = 0;i<n;++i){
-   if(max_index1 == -1||(*numbers>*max_index1))
+   if(max_index1 == -1||(*numbers>*(num+max_index1)))
     max_index1 = i;
   }
 
   int max_index2 = -1;
   for(int i = 0;i<n;++i){
-    if(max_index2!=max_index2&&(max_index2 == -1||*numbers>(*(numbers+max_index2))))
+    if(max_index2!=max_index2&&(max_index2 == -1||*numbers>(*(num+max_index2))))
       max_index2 = i;
   }
 
